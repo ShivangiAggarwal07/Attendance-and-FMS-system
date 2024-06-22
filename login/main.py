@@ -7,32 +7,9 @@ import os
 import tkinter as tk
 from tkinter import simpledialog
 
-import os
-from tkinter import Tk, PhotoImage, Label
 
-# Print the current working directory
-print("Current working directory:", os.getcwd())
 
-# Get the directory of the currently executing script
-script_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Construct the full path to the image
-image_path = os.path.join(script_dir, 'login.png')
-
-# Print the full path for debugging purposes
-print("Full image path:", image_path)
-
-# Initialize Tkinter
-root = Tk()
-
-try:
-    # Load the image
-    img = PhotoImage(file=image_path)
-    # Display the image in a label
-    label = Label(root, image=img)
-    label.pack()
-except Exception as e:
-    print("Error loading image:", e)
 
 # Run the Tkinter main loop
 
