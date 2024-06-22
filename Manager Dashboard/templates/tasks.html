@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Tasks</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        /* Custom styles */
+        body {
+            background-color: #feffff; /* Light grayish blue (primary - 60%) */
+        }
+        .sidebar {
+            border: #cbd5e0; /* Darker blue gradient (sidebar) */
+        }
+        .top-nav {
+            background: linear-gradient(to right, #254463, #162d41); /* Darker blue gradient (top navigation) */
+            color: #feffff;
+        }
+        .task-list {
+            background-color: #d1d5db; /* Light gray (task list) */
+            border: 1px solid #b0b7c2; /* Light gray border */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow */
+        }
+        .task-list li {
+            padding: 12px;
+            border-bottom: 1px solid #b0b7c2; /* Light gray border */
+        }
+        .task-list li:last-child {
+            border-bottom: none;
+        }
+        .bg-blue-500 {
+            background-color: #3b82f6; /* Blue (accent - 10%) */
+        }
+        .bg-blue-700 {
+            background-color: #2563eb; /* Darker blue (accent - 10%) */
+        }
+        .text-blue-500 {
+            color: #3b82f6; /* Blue (accent - 10%) */
+        }
+        .text-blue-700 {
+            color: #2563eb; /* Darker blue (accent - 10%) */
+        }
+        .text-red-500 {
+            color: #ef4444; /* Red (accent - 10%) */
+        }
+        .text-red-700 {
+            color: #dc2626; /* Darker red (accent - 10%) */
+        }
+        .nav {
+            background: linear-gradient(to right, #162d41, #0f1f2e);
+            color: #cbd5e0; /* Darker blue gradient (sidebar) */
+        }
+        .nav-link {
+            color: #cbd5e0; /* Light grayish blue (text color) */
+        }
+        .nav-link:hover {
+            color: #ffffff; /* White on hover */
+            background-color: #d3dced; /* Darker background on hover */
+        }
+        .font {
+            align-items: center;
+        }
+    </style>
+</head>
+<body class="font-sans leading-normal tracking-normal">
+
+    <!-- Sidebar -->
+    <div class="flex flex-col md:flex-row sidebar">
+        <div class="flex flex-col w-full md:w-64 text-gray-700 bg-white flex-shrink-0">
+            <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between nav">
+                <span class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg focus:outline-none focus:shadow-outline nav">Dashboard</span>
+            </div>
+            
+            <nav class="flex-grow px-4 pb-4 md:pb-0 md:overflow-y-auto nav">
+                <!-- Add image icon here -->
+                <div class="flex justify-center mt-6">
+                    <img src="{{ url_for('static', filename='images/678.jpg') }}" alt="Tasks Icon" class="w-32 h-32 object-cover rounded-full">
+                </div>
+                <a class="block px-4 py-2 mt-2 text-sm font-semibold nav-link rounded-lg hover:text-gray-900 hover:bg-gray-300" href="#">Home</a>
+                <a class="block px-4 py-2 mt-2 text-sm font-semibold nav-link rounded-lg hover:text-gray-900 hover:bg-gray-300" href="assigned-tasks"> View Assigned Tasks</a>
+                <a class="block px-4 py-2 mt-2 text-sm font-semibold nav-link rounded-lg hover:text-gray-900 hover:bg-gray-300" href="#">Completed Tasks</a>
+                <a class="block px-4 py-2 mt-2 text-sm font-semibold nav-link rounded-lg hover:text-gray-900 hover:bg-gray-300" href="ongoing">Ongoing Tasks</a>
+                <a class="block px-4 py-2 mt-2 text-sm font-semibold nav-link rounded-lg hover:text-gray-900 hover:bg-gray-300" href="#">Not Started Tasks</a>
+                
+
+
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex flex-col flex-grow">
+            <!-- Top Navigation Menu -->
+            <header class="flex-shrink-0 border-b top-nav">
+                <div class="flex items-center justify-between p-4">
+                    <h1 class="text-2xl font-semibold font">Manage Tasks</h1>
+                    <div class="flex items-center">
+                        <span class="mr-4">Welcome, Manager</span>
+                        <button class="px-4 py-2 text-sm text-white bg-blue-500 rounded-lg hover:bg-blue-700"><a href="/" class="text-white hover:underline">Log Out</a></button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Task Form -->
+            <main class="flex-grow p-6">
+                <form method="POST" class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="mb-4">
+                        <label for="description" class="block text-gray-700 font-bold mb-2">Task Description:</label>
+                        <input type="text" id="description" name="description" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="deadline" class="block text-gray-700 font-bold mb-2">Deadline:</label>
+                        <input type="text" id="deadline" name="deadline" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline flatpickr" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="employee" class="block text-gray-700 font-bold mb-2">Assign to:</label>
+                        <select id="employee" name="employee[]" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" multiple required>
+                            {% for employee in employees %}
+                                <option value="{{ employee.id }}">{{ employee.id }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label for="team-lead" class="block text-gray-700 font-bold mb-2">Assign Team Lead:</label>
+                        <select id="team-lead" name="team_lead" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                            {% for employee in employees %}
+                                <option value="{{ employee.id }}">{{ employee.id }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add Task</button>
+                </form>
+
+                <!-- Task List -->
+                <h2 class="text-xl font-semibold mt-6">Task List</h2>
+                <ul class="task-list p-6 rounded-lg shadow-md mt-4">
+                    {% for task in tasks %}
+                        <li class="border-b border-gray-200 py-2 flex justify-between items-center">
+                            <div>
+                                <p class="font-bold">{{ task.description }}</p>
+                                <p class="text-gray-700">Deadline: {{ task.deadline }}</p>
+                                <p class="text-gray-700">Assigned to: {{ task.employee_id }}</p>
+                                <p class="text-gray-700">Team Lead: {{ task.team_lead }}</p>
+                                <p class="text-gray-700">Status: {{ task.status }}</p>
+                            </div>
+                            <a href="{{ url_for('delete_task', task_id=task.id) }}" class="text-red-500 hover:text-red-700">Delete</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        flatpickr(".flatpickr", {
+            enableTime: true,
+            dateFormat: "Y-m-d H:i",
+        });
+    </script>
+</body>
+</html>

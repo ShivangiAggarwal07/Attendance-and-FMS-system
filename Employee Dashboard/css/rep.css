@@ -1,0 +1,60 @@
+
+.main-content {
+    position: relative;
+    left: 90px;
+    transition: 1s;
+    margin-left: 0;
+    padding: 20px;
+    padding-top: 90px;
+    width: calc(100% - 270px);
+}
+.sidebar:hover ~ .main-content {
+    left: 300px; 
+}
+.section {
+    
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    gap: 20px;
+}
+
+.section h2 {
+    margin-top: 0;
+}
+.report {
+    width: 300px;
+    margin-bottom: 20px;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.report h3 {
+    margin-top: 0;
+}
+
+.report p {
+    margin: 10px 0;
+}
+
+.report button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.report button:hover {
+    background-color: #7644c7;
+    text-decoration:underline;
+}

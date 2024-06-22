@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+
+.main-container {
+    position: relative;
+    left: 90px;
+    transition: 1s;
+    margin-left: 0px;
+    padding: 20px;
+    padding-top: 90px;
+    width: calc(100% - 270px);
+}
+.sidebar:hover ~ .main-container {
+    left: 280px; /* Adjust this value to match the width of the sidebar when it's visible */
+  }

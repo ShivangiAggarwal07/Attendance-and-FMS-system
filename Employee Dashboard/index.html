@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Employee Dashboard</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/> 
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+   <script src="./js/main.js" defer></script>
+   <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+   <!-- <div class="container">
+       <nav>
+           <ul>
+               <li>
+                   <a href="#" class="logo">
+                       <img src="./pic/log.png" alt="Company Logo">
+                       <span class="nav-iten"></span>
+                   </a>
+               </li>
+           </ul>
+       </nav>
+   </div> -->
+   <header>
+    <div class="navbar">
+        <div class="left-links">
+            <a href="#"> <span class="material-symbols-outlined">
+                home
+                </span></a>
+        </div>
+        <div class="center-img">
+            <img src="./pic/log.png" alt="Company Logo">
+        </div>
+        <div class="right-links">
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">
+                  <span class="material-symbols-outlined">settings</span>
+                </a>
+                <div class="dropdown-content">
+                  <a href="setting1">Contact Admin</a>
+                  <a href="setting2">Troubleshoot</a>
+                  <a href="setting3">Setting 3</a>
+                </div>
+              </div>
+            <a href="logout"><span class="material-symbols-outlined">
+                logout
+                </span></a>
+        </div>
+    </div>
+   </header>
+   <div class="sidebar-container">
+   <div class="sidebar" id="mySidebar">
+    <div style="text-align: right;">
+
+        <a id="toggle-sidebar">
+            <img src="./pic/lines.png" style="height: 40px; width: 40px;">
+        </a>
+    </div>
+    
+       <div class="card">
+        
+        <img src="./pic/img1.png">
+        
+        <h4>Sam David</h4>
+        <p>Ui designer</p>
+        
+        <a href="profile.html"> <button><b>Profile</b></button>
+      </div>
+    </br>
+       <div class="quick-links">
+           <a href="#">Dashboard</a>
+           <a href="attendence.html">Attendance</a>
+           <a href="tasks.html">Tasks</a>
+           <a href="apply_leave.html">Leave Requests</a>
+           <a href="reports.html">Reports</a>
+       </div>
+   </div>
+</div>
+   <div class="main-content">
+       <div class="section welcome-section">
+           <h2>Welcome, Sam David !<span id="employeeName"></span></h2>
+           <p>Current Date and Time: <span id="dateTime"></span></p>
+       </div>
+       <div class="section attendance-section">
+           <h2>Attendance</h2>
+           <div class="attendance-widget">
+               Facial Recognition Attendance
+           </div>
+           <div class="status">
+               <div>
+                   <h3>Today's Status</h3>
+                   <p>Time In: <span id="timeIn">-</span></p>
+                   <p>Time Out: <span id="timeOut">-</span></p>
+                   <p>Total Hours Worked: <span id="totalHours">-</span></p>
+               </div>
+               <div>
+                   <h3>Monthly Summary</h3>
+                   <p>Days Present: <span id="daysPresent">-</span></p>
+                   <p>Days Absent: <span id="daysAbsent">-</span></p>
+                   <p>Leave Taken: <span id="leaveTaken">-</span></p>
+               </div>
+           </div>
+       </div>
+       <div class="section leave-section">
+           <h2>Leave and Holidays</h2>
+           <p>Leave Balance: <span id="leaveBalance">-</span> days</p>
+           <h3>Upcoming Holidays</h3>
+           <ul id="holidaysList"></ul>
+           <h3>Leave Requests</h3>
+           <ul id="leaveRequestsList"></ul>
+       </div>
+       <div class="section tasks-section">
+           <h2>Tasks and Notifications</h2>
+           <h3>Task Overview</h3>
+           <div class="task">
+               <div>Task Name</div>
+               <div>Assigned Date</div>
+               <div>Due Date</div>
+               <div>Status</div>
+           </div>
+           <div id="taskOverview"></div>
+           <h3>Task Notifications</h3>
+           <ul>
+               <li>New Task Assignments</li>
+               <li>Task Deadlines</li>
+               <li>Success Notifications for Completed Tasks</li>
+           </ul>
+           <h3>Plan vs. Actual Time</h3>
+           <p>Planned Time for Tasks: <span id="plannedTime">-</span></p>
+           <p>Actual Time Taken: <span id="actualTime">-</span></p>
+       </div>
+       <div class="section reports-section">
+           <h2>Reports</h2>
+           <div class="reports">
+               <div class="report">
+                   <h3>Attendance Reports</h3>
+                   <p>Daily/Weekly/Monthly Attendance Reports</p>
+               </div>
+               <div class="report">
+                   <h3>Task Completion Reports</h3>
+                   <p>Reports on task completion status and timelines.</p>
+               </div>
+               <div class="report">
+                   <h3>Performance Reports</h3>
+                   <p>Performance metrics for team members.</p>
+               </div>
+           </div>
+       </div>
+       <div class="section management-approvals-section">
+           <h2>Management and Approvals</h2>
+           <h3>Leave Approval Requests</h3>
+           <ul id="leaveApprovalRequests">
+               <li>List of pending leave requests to approve/reject.</li>
+           </ul>
+           <h3>Task Reports from Team Members</h3>
+           <ul id="taskReports">
+               <li>Review task completion reports from team members.</li>
+           </ul>
+           <h3>Examination and Approvals</h3>
+           <ul id="examApprovals">
+               <li>List of examinations needing approval.</li>
+           </ul>
+       </div>
+   </div>
+</body>
+<script>
+    const toggleSidebar = document.getElementById('toggle-sidebar');
+  const sidebarContainer = document.querySelector('.sidebar-container');
+  
+  toggleSidebar.addEventListener('click', () => {
+      sidebarContainer.classList.toggle('show');
+  });
+
+  var sidebar = document.querySelector('.sidebar');
+var mainContent = document.querySelector('.main-content');
+
+sidebar.addEventListener('mouseover', function() {
+    mainContent.classList.add('move-right');
+});
+
+sidebar.addEventListener('mouseout', function() {
+    mainContent.classList.remove('move-right');
+});
+  </script>
+</html>

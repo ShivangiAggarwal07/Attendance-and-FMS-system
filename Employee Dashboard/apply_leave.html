@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/leave.css">
+
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="left-links">
+                <a href="index.html"> <span class="material-symbols-outlined">
+                    home
+                    </span></a>
+            </div>
+            <div class="center-img">
+                <img src="./pic/log.png" alt="Company Logo">
+            </div>
+            <div class="right-links">
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                      <span class="material-symbols-outlined">settings</span>
+                    </a>
+                    <div class="dropdown-content">
+                      <a href="setting1">Contact Admin</a>
+                      <a href="setting2">Troubleshoot</a>
+                      <a href="setting3">Setting 3</a>
+                    </div>
+                  </div>
+                <a href="logout"><span class="material-symbols-outlined">
+                    logout
+                    </span></a>
+            </div>
+        </div>
+       </header>
+       
+       <div class="sidebar">
+        <div style="text-align: right;">
+            <img src="./pic/lines.png" style="height: 40px; width: 40px;">
+        </div>
+        
+           <div class="card">
+            
+            <img src="./pic/img1.png">
+            
+            <h4>Sam David</h4>
+            <p>Ui designer</p>
+            
+            <button><b>Profile</b></button>
+          </div>
+        </br>
+           <div class="quick-links">
+               <a href="index.html">Dashboard</a>
+               <a href="attendence.html">Attendance</a>
+               <a href="tasks.html">Tasks</a>
+               <a href="#">Leave Requests</a>
+               <a href="reports.html">Reports</a>
+           </div>
+       </div>
+   
+
+    <div class="main-container">
+        <div class="pd-ltr-20 xs-pd-20-10">
+            <div class="min-height-200px">
+
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="title">
+                                <h4>Leave Type List</h4>
+                            </div>
+                            <nav aria-label="breadcrumb" role="navigation">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Leave Form</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-left: 30px; margin-right: 30px;" class="pd-20 card-box mb-30">
+                    <div class="clearfix">
+                        <div class="pull-left">
+                            <h4 class="text-blue h4">Staff Form</h4>
+                            <p class="mb-20"></p>
+                        </div>
+                    </div>
+                    <div class="wizard-content">
+                        <form method="post" action="">
+                            <section>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label>First Name </label>
+                                            <input name="firstname" type="text" class="form-control wizard-required" required="true"  value="John">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label>Last Name </label>
+                                            <input name="lastname" type="text" class="form-control"  autocomplete="off" value="Doe">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label>Position</label>
+                                            <input name="position" type="text" class="form-control" required="true" autocomplete="off" value="Software Engineer">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label>Staff ID Number </label>
+                                            <input name="staff_id" type="text" class="form-control" required="true" autocomplete="off"  value="123456">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="form-group">
+                                            <label>Leave Type :</label>
+                                            <select name="leave_type" id="leave_type" class="custom-select form-control" required="true" autocomplete="off">
+                                                <option value="">Select leave type...</option>
+                                                <option value="Casual Leave">Casual Leave</option>
+                                                <option value="Sick Leave">Sick Leave</option>
+                                                <option value="Vacation Leave">Vacation Leave</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label>Start Leave Date :</label>
+                                            <input id="date_form" name="date_from" type="date" class="form-control" required="true" autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label>End Leave Date :</label>
+                                            <input id="date_to" name="date_to" type="date" class="form-control" required="true" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label>Leave Days Requested</label>
+                                            <input id="requested_days" name="requested_days" type="text" class="form-control" required="true" autocomplete="off"  value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label>Number Days still outstanding </label>
+                                            <input id="leave_days" name="leave_days" type="text" class="form-control" required="true" autocomplete="off" readonly value="15">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label>Work to be covered by </label>
+                                            <input id="work_cover" name="work_cover" type="text" class="form-control" required="true" autocomplete="off" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label>Reason for leave</label>
+                                            <textarea name="reason" class="form-control" required="true" autocomplete="off"></textarea>
+                                        </div>
+                                    </div></div>
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label>Signature </label>
+                                            <div id="sig"></div>
+                                            <br/>
+                                            <p style="clear: both;" class="btn btn-group">
+                                            </p>
+                                            <div class="dropdown">
+                                                <button class="btn btn-outline-danger" id="clear">Clear Signature</button>
+                                            </div>
+                                            <br/>
+                                            <textarea id="signature64" name="signed" style="display: none" required="true"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label style="font-size:16px;"><b></b></label>
+                                            <div class="modal-footer justify-content-center">
+                                                <button class="btn btn-primary" name="apply" id="apply" data-toggle="modal">Apply Leave</button>
+                                                </div>
+                                                </div>
+                                                </div>
+                                                </div>
+                                                </section>
+                                                </form>
+                                                </div>
+                                                </div>
+                                                </div>
+                                                </div>
+                                                </div><script type="text/javascript">
+                                                    var sig = $('#sig').signature({syncField: '#signature64', syncFormat: 'PNG'});
+                                                    $('#clear').click(function(e) {
+                                                        e.preventDefault();
+                                                        sig.signature('clear');
+                                                        $("#signature64").val('');
+                                                    });
+                                                </script>
+                                                   <script src="./js/leave.js" defer></script>
+
+                                                
+</div>
+</div>
+<div class="cont"></div>
+</body>
+</html>
