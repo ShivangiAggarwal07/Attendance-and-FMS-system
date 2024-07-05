@@ -7,6 +7,15 @@ import os
 import tkinter as tk
 from tkinter import simpledialog
 
+<<<<<<< HEAD
+=======
+
+
+
+
+# Run the Tkinter main loop
+
+>>>>>>> 2d2c996d279364cc8a7793949b5b2ebd161afaad
 root = Tk()
 root.title('Login')
 root.geometry('925x500+300+200')
