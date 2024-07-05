@@ -7,35 +7,6 @@ import os
 import tkinter as tk
 from tkinter import simpledialog
 
-import os
-from tkinter import Tk, PhotoImage, Label
-
-# Print the current working directory
-print("Current working directory:", os.getcwd())
-
-# Get the directory of the currently executing script
-script_dir = os.path.dirname(os.path.abspath(__file__))
-
-# Construct the full path to the image
-image_path = os.path.join(script_dir, 'login.png')
-
-# Print the full path for debugging purposes
-print("Full image path:", image_path)
-
-# Initialize Tkinter
-root = Tk()
-
-try:
-    # Load the image
-    img = PhotoImage(file=image_path)
-    # Display the image in a label
-    label = Label(root, image=img)
-    label.pack()
-except Exception as e:
-    print("Error loading image:", e)
-
-# Run the Tkinter main loop
-
 root = Tk()
 root.title('Login')
 root.geometry('925x500+300+200')
@@ -107,7 +78,7 @@ def signup_command():
         window.destroy()
 
 
-    img = PhotoImage(file='login1.png')
+    img = PhotoImage(file='login\login1.png')
     Label(window,image=img,border=0,bg='white').place(x=50,y=90)
     frame=Frame(window,width=350,height=390,bg='#fff')
     frame.place(x=480,y=50)
@@ -271,7 +242,7 @@ def signup_command():
 
 #####
 
-img = PhotoImage(file='login.png')
+img = PhotoImage(file='login\login.png')
 Label(root,image=img,bg='white').place(x=50,y=50)
 
 frame=Frame(root,width=350,height=350,bg="white")
