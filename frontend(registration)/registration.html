@@ -1,110 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Employee Registration</title>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/> 
-   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="./css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Registration</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        royal: {
+                            light: '#7c3aed',
+                            DEFAULT: '#6d28d9',
+                            dark: '#5b21b6',
+                        },
+                    },
+                },
+                fontFamily: {
+                    sans: ['Poppins', 'sans-serif'],
+                },
+            },
+        }
+    </script>
 </head>
-<body>
-   <header>
-    <div class="navbar">
-        <div class="left-links">
-            <a href="#"> <span class="material-symbols-outlined">home</span></a>
-        </div>
-        <div class="center-img">
-            <img src="./pic/log.png" alt="Company Logo">
-        </div>
-        <div class="right-links">
-            <div class="dropdown">
-                <a href="#" class="dropdown-toggle">
-                  <span class="material-symbols-outlined">settings</span>
-                </a>
-                <div class="dropdown-content">
-                  <a href="setting1">Contact Admin</a>
-                  <a href="setting2">Troubleshoot</a>
-                  <a href="setting3">Setting 3</a>
+<body class="font-sans bg-gradient-to-br from-blue-50 to-purple-50 min-h-screen text-gray-800">
+    <header class="bg-white shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-semibold text-royal">
+                <span class="material-symbols-outlined">home</span>
+            </a>
+            <img src="../Employee Dashboard/pic/log.png" alt="Company Logo" class="h-10">
+            <div class="flex items-center space-x-6">
+                <div class="relative group">
+                    <button class="text-royal hover:text-royal-dark transition-colors">
+                        <span class="material-symbols-outlined">settings</span>
+                    </button>
+                    <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg hidden group-hover:block">
+                        <a href="#" class="block px-4 py-2 text-sm text-royal hover:bg-royal hover:text-white transition-colors">Contact Admin</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-royal hover:bg-royal hover:text-white transition-colors">Troubleshoot</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-royal hover:bg-royal hover:text-white transition-colors">Setting 3</a>
+                    </div>
                 </div>
-              </div>
-            <a href="logout"><span class="material-symbols-outlined">logout</span></a>
-        </div>
-    </div>
-   </header>
-   <div class="sidebar-container">
-   <div class="sidebar" id="mySidebar">
-    <div style="text-align: right;">
-        <a id="toggle-sidebar">
-            <img src="./pic/lines.png" style="height: 40px; width: 40px;">
-        </a>
-    </div>
-       <div class="card">
-        <img src="./pic/img1.png">
-        <h4>Sam David</h4>
-        <p>Ui designer</p>
-        <a href="profile.html"> <button><b>Profile</b></button></a>
-      </div>
-    </br>
-       <div class="quick-links">
-           <a href="#">Dashboard</a>
-           <a href="attendence.html">Attendance</a>
-           <a href="tasks.html">Tasks</a>
-           <a href="apply_leave.html">Leave Requests</a>
-           <a href="reports.html">Reports</a>
-       </div>
-   </div>
-</div>
-   <div class="main-content">
-       <div class="section">
-           <h2>Employee Registration</h2>
-           <form id="registrationForm" enctype="multipart/form-data">
-            <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName" required><br>
-            <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName" required><br>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required><br>
-            <label for="designation">Designation:</label>
-            <input type="text" id="designation" name="designation" required><br>
-            <label for="city">City:</label>
-            <input type="text" id="city" name="city" required><br>
-            <label for="state">State:</label>
-            <input type="text" id="state" name="state" required><br>
-            <label for="country">Country:</label>
-            <input type="text" id="country" name="country" required><br>
-            <label for="birthDate">Birth Date:</label>
-            <input type="date" id="birthDate" name="birthDate" required><br>
-            <label for="phoneNumber">Phone Number:</label>
-            <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{10}" required><br>
-            <label for="gender">Gender:</label>
-            <select id="gender" name="gender" required>
-                <option value="">Select Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-            </select><br>
-            <label for="photo">Upload Photo for Facial Recognition:</label>
-            <input type="file" id="photo" name="photo" accept="image/*" required><br>
-            <button type="submit"><b>Register</b></button>
+                <a href="logout" class="text-royal hover:text-royal-dark transition-colors">
+                    <span class="material-symbols-outlined">logout</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto p-8">
+        <h2 class="text-3xl font-bold mb-12 text-center text-royal bg-white py-4 rounded-lg shadow-md">EMPLOYEE REGISTRATION FORM</h2>
+        <form id="registrationForm" class="bg-white shadow-lg rounded-lg px-10 py-8 mb-4 max-w-4xl mx-auto" enctype="multipart/form-data">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <label for="firstName" class="block text-royal text-sm font-medium mb-2">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required class="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-royal">
+                </div>
+                <div>
+                    <label for="lastName" class="block text-royal text-sm font-medium mb-2">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required class="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-royal">
+                </div>
+                <div>
+                    <label for="email" class="block text-royal text-sm font-medium mb-2">Email Address</label>
+                    <input type="email" id="email" name="email" required class="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-royal">
+                </div>
+                <div>
+                    <label for="password" class="block text-royal text-sm font-medium mb-2">Password</label>
+                    <input type="password" id="password" name="password" required class="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-royal">
+                </div>
+                <div>
+                    <label for="designation" class="block text-royal text-sm font-medium mb-2">Designation</label>
+                    <input type="text" id="designation" name="designation" required class="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-royal">
+                </div>
+                <div>
+                    <label for="birthDate" class="block text-royal text-sm font-medium mb-2">Date of Birth</label>
+                    <input type="date" id="birthDate" name="birthDate" required class="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-royal">
+                </div>
+                <div>
+                    <label for="gender" class="block text-royal text-sm font-medium mb-2">Gender</label>
+                    <select id="gender" name="gender" required class="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-royal">
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="phoneNumber" class="block text-royal text-sm font-medium mb-2">Phone Number</label>
+                    <div class="flex">
+                        <select id="countryCode" name="countryCode" class="w-20 px-3 py-2 text-gray-700 border rounded-l-md focus:outline-none focus:ring-2 focus:ring-royal">
+                            <option value="+91">+91</option>
+                            <option value="+61">+61</option>
+                            <option value="+71">+71</option>
+                        </select>
+                        <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{10}" required class="flex-1 px-3 py-2 text-gray-700 border border-l-0 rounded-r-md focus:outline-none focus:ring-2 focus:ring-royal">
+                    </div>
+                </div>
+                <div>
+                    <label for="address" class="block text-royal text-sm font-medium mb-2">Address</label>
+                    <textarea id="address" name="address" rows="3" required class="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-royal"></textarea>
+                </div>
+                <div>
+                    <label for="city" class="block text-royal text-sm font-medium mb-2">City</label>
+                    <input type="text" id="city" name="city" required class="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-royal">
+                </div>
+                <div>
+                    <label for="state" class="block text-royal text-sm font-medium mb-2">State</label>
+                    <input type="text" id="state" name="state" required class="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-royal">
+                </div>
+                <div>
+                    <label for="country" class="block text-royal text-sm font-medium mb-2">Country</label>
+                    <input type="text" id="country" name="country" required class="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-royal">
+                </div>
+                <div>
+                    <label for="education" class="block text-royal text-sm font-medium mb-2">Educational Qualification</label>
+                    <select id="education" name="education" required class="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-royal">
+                        <option value="">Select Course</option>
+                        <option value="BE/BTech">BE/BTech</option>
+                        <option value="MTech">MTech</option>
+                        <option value="BCom">B.Com</option>
+                        <option value="BCA">BCA</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="experience" class="block text-royal text-sm font-medium mb-2">Years of Experience</label>
+                    <select id="experience" name="experience" required class="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-royal">
+                        <option value="">Select Years</option>
+                        <option value="0-1">0-1 years</option>
+                        <option value="2-3">2-3 years</option>
+                        <option value="3-4">3-4 years</option>
+                        <option value="5+">More than 5 years</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-royal text-sm font-medium mb-2">Skill Sets</label>
+                    <div class="space-y-2">
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" name="skills[]" value="AI" class="form-checkbox text-royal">
+                            <span class="ml-2">Artificial Intelligence</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" name="skills[]" value="DataScience" class="form-checkbox text-royal">
+                            <span class="ml-2">Data Science</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" name="skills[]" value="CyberSecurity" class="form-checkbox text-royal">
+                            <span class="ml-2">Cyber Security</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" name="skills[]" value="IoT" class="form-checkbox text-royal">
+                            <span class="ml-2">Internet of Things</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" name="skills[]" value="ML" class="form-checkbox text-royal">
+                            <span class="ml-2">Machine Learning</span>
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <label for="photo" class="block text-royal text-sm font-medium mb-2">Upload Photo for Facial Recognition</label>
+                    <input type="file" id="photo" name="photo" accept="image/*" required class="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-royal">
+                </div>
+            </div>
+            <div class="mt-12 text-center space-x-6">
+                <button type="submit" class="bg-gradient-to-r from-royal to-royal-light text-white font-bold py-3 px-8 rounded-full focus:outline-none focus:ring-2 focus:ring-royal focus:ring-opacity-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                    Submit
+                </button>
+                <button type="reset" class="bg-gray-200 text-royal font-bold py-3 px-8 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                    Reset
+                </button>
+            </div>
         </form>
-       </div>
-   </div>
-   <script src="./js/main.js" defer></script>
-   <script>
-    document.getElementById('registrationForm').addEventListener('submit', function(event) {
-        event.preventDefault();
+    </main>
 
-        // Perform form data submission here (you can use fetch or XMLHttpRequest)
-
-        // Assuming registration is successful, redirect to dashboard
-        window.location.href = 'index.html'; // Replace with your actual dashboard page URL
-    });
-</script>
+    
+    <script>
+       
+        
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+        
+            // Add skills as an array
+            const skills = Array.from(form.querySelectorAll('input[name="skills[]"]:checked')).map(checkbox => checkbox.value);
+            formData.delete('skills[]');
+            skills.forEach(skill => formData.append('skills', skill));
+        
+            fetch('http://localhost:3000/api/employees', {
+                method: 'POST',
+                body: formData
+                
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Success:', data);
+                alert('Employee registered successfully!');
+                // Redirect to dashboard or clear form
+                // window.location.href = 'dashboard.html';
+                form.reset();
+            })
+            .catch((error) => {
+    console.error('Error:', error);
+    if (error instanceof TypeError && error.message.includes('NetworkError')) {
+        alert('Network error. Please check if the server is running and CORS is configured correctly.');
+    } else {
+        alert('Error registering employee. Please try again.');
+    }
+});
+        });
+        </script>
 </body>
 </html>
