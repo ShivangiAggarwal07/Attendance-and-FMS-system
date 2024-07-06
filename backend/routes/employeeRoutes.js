@@ -3,7 +3,9 @@ const router = express.Router();
 const Employee = require('../models/Employee');
 const multer = require('multer');
 const path = require('path');
-
+const asyncHandler = fn => (req, res, next) => {
+  Promise.resolve(fn(req, res, next)).catch(next);
+};
 // Set up multer for file upload
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -13,13 +15,28 @@ const storage = multer.diskStorage({
     cb(null, Date.now() + path.extname(file.originalname));
   }
 });
+const fileFilter = (req, file, cb) => {
+  const filetypes = /jpeg|jpg|png/;
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+  const mimetype = filetypes.test(file.mimetype);
+
+  if (mimetype && extname) {
+    return cb(null, true);
+  } else {
+    cb('Error: Images Only!');
+  }
+};
 
 const upload = multer({ storage: storage });
-
+ 
 // POST route to create a new employee
-router.post('/', upload.single('photo'), async (req, res) => {
+router.post('/postdata', upload.single('photo'),  asyncHandler(async (req, res) => {
   console.log('Received request body:', req.body);
   console.log('Received file:', req.file);
+
+  if (!req.file) {
+    return res.status(400).json({ message: 'Photo is required' });
+  }
   try {
     const employeeData = {
       ...req.body,
@@ -33,7 +50,7 @@ router.post('/', upload.single('photo'), async (req, res) => {
   } catch (error) {
     res.status(400).json({ message: 'Error registering employee', error: error.message });
   }
-});
+}));
 
 // GET route to fetch all employees
 router.get('/', async (req, res) => {
