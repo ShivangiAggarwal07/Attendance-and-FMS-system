@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+// const bcrypt = require('bcrypt');
 
 const employeeSchema = new mongoose.Schema({
   firstName: { type: String, required: true },
@@ -16,7 +17,20 @@ const employeeSchema = new mongoose.Schema({
   education: { type: String, required: true },
   experience: { type: String, required: true },
   skills: [{ type: String }],
-  photo: { type: String, required: true }
+  photo: { type: String}
 });
+
+// employeeSchema.pre('save', async function(next) {
+//   if (!this.isModified('password')) {
+//     return next();
+//   }
+//   try {
+//     const salt = await bcrypt.genSalt(10);
+//     this.password = await bcrypt.hash(this.password, salt);
+//     next();
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
 module.exports = mongoose.model('Employee', employeeSchema);

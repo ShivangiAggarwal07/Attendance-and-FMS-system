@@ -177,25 +177,22 @@
         </form>
     </main>
 
-    
     <script>
-       
-        
         document.getElementById('registrationForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            
+
             const form = event.target;
             const formData = new FormData(form);
-        
-            // Add skills as an array
-            const skills = Array.from(form.querySelectorAll('input[name="skills[]"]:checked')).map(checkbox => checkbox.value);
-            formData.delete('skills[]');
-            skills.forEach(skill => formData.append('skills', skill));
-        
-            fetch('http://localhost:3000/api/employees', {
+
+            // Convert the FormData object to a plain object for debugging
+            const plainFormData = Object.fromEntries(formData.entries());
+            plainFormData.skills = formData.getAll('skills');
+
+            console.log('Form Data:', plainFormData);
+
+            fetch('http://localhost:3000/api/postdata', {
                 method: 'POST',
                 body: formData
-                
             })
             .then(response => {
                 if (!response.ok) {
@@ -206,19 +203,17 @@
             .then(data => {
                 console.log('Success:', data);
                 alert('Employee registered successfully!');
-                // Redirect to dashboard or clear form
-                // window.location.href = 'dashboard.html';
                 form.reset();
             })
             .catch((error) => {
-    console.error('Error:', error);
-    if (error instanceof TypeError && error.message.includes('NetworkError')) {
-        alert('Network error. Please check if the server is running and CORS is configured correctly.');
-    } else {
-        alert('Error registering employee. Please try again.');
-    }
-});
+                console.error('Error:', error);
+                if (error.message.includes('Network response was not ok')) {
+                    alert('Network error. Please check if the server is running and CORS is configured correctly.');
+                } else {
+                    alert('Error registering employee. Please try again.');
+                }
+            });
         });
-        </script>
+    </script>
 </body>
 </html>

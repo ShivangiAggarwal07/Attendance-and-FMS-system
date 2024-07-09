@@ -22,15 +22,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+mongoose.connect('mongodb+srv://myAtlasDBUser:tikitaka@myatlasclusteredu.1ap2k6d.mongodb.net/harsh')
 .then(() => console.log('Connected to MongoDB'))
 .catch(err => console.error('Error connecting to MongoDB:', err));
 
 // Routes
-app.use('/routes/employees', employeeRoutes);
+app.use('/api', employeeRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
